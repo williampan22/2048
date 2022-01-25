@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class Board {
+public class Board { //a
  
 	private int[][] board; // holds state of game
 	private Random rnd = new Random(0); // setup random # generator
