@@ -3,7 +3,7 @@ import java.util.Random;
 public class Board {
  
 	private int[][] board; // holds state of game
-	private Random rnd = new Random(); // setup random # generator
+	private Random rnd = new Random(); // setup random # generator a
 	private int size; 
 	//What instance variable can you add to keep track of the size or the number of tiles occupied?
 	
@@ -118,9 +118,7 @@ public class Board {
 	 */
 
 	public void slideRight(int[] row) {
-		for(int i = 0; i < row.length-1; i++) { 
-			row[i+1] = row[i];
-		}
+		
 	
 	}
 
