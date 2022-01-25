@@ -1,10 +1,10 @@
 import java.util.Random;
 
-public class Board { //a
+public class Board {
  
 	private int[][] board; // holds state of game
-	private Random rnd = new Random(0); // setup random # generator
-	
+	private Random rnd = new Random(); // setup random # generator
+	private int size; 
 	//What instance variable can you add to keep track of the size or the number of tiles occupied?
 	
 	/* default constructor for board */
@@ -16,6 +16,7 @@ public class Board { //a
 		board = new int[4][4];
 		populateOne();
 		populateOne();
+		 
 	}
 
 	/*
@@ -49,6 +50,14 @@ public class Board { //a
 		//every spot possible
 		
 		
+		for(int i =0; i < board.length; i++) { //a
+			for(int j =0; j < board[i].length; j++) { 
+				String str = String.format("%04d", board[i][j]) + " ";
+				System.out.print(str);
+			}
+			System.out.println("");
+		}
+		
 		
 		return "";
 	}
@@ -72,11 +81,31 @@ public class Board { //a
 		// what happens if the entire board is full??! 
 		
 		
+		int row = rnd.nextInt(board.length); 
+		int col = rnd.nextInt(board.length);
+		int random1 = rnd.nextInt(100);
 		
-			
+		while(board[row][col] != 0 ){ 
+			row = rnd.nextInt(board.length);
+			col = rnd.nextInt(board.length);
+		}
+		if(board[row][col] == 0 && random1 <= 90) {
+			board[row][col] = 2; 
+		}
+		if(board[row][col] == 0 && random1 > 90) {
+			board[row][col] = 4; 
+		}
 
 	}
 
+	public void eraseBoard() { 
+		for(int i =0; i < board.length; i++) { 
+			for(int j = 0; j < board[i].length; j++) { 
+				board[i][j] = 0; 
+			}
+		}
+	}
+	
 	/*
 	 * 
 	 * Given an array of integers, slide all non-zero elements to the right.
@@ -89,8 +118,9 @@ public class Board { //a
 	 */
 
 	public void slideRight(int[] row) {
-		
-
+		for(int i = 0; i < row.length-1; i++) { 
+			row[i+1] = row[i];
+		}
 	
 	}
 

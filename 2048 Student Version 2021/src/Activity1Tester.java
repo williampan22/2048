@@ -6,6 +6,8 @@ public class Activity1Tester {
 		// Create a Board object
 		Board b = new Board();
 		
+		
+		
 		// invoke the toString method by passing the object to 
 		// print or println
 
