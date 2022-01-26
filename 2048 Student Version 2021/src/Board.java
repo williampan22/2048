@@ -119,7 +119,7 @@ public class Board {
 
 	public void slideRight(int[] row) {
 		
-	
+		
 	}
 
 	/*
@@ -138,6 +138,16 @@ public class Board {
 		// go through 2D array, move all digits as far right as possible
 		//setup a loop to grab ONE row at a time from 2d array board
 	
+		for(int i =0; i < board.length; i++) { 
+			for(int k = 0; k < board[i].length; k++) { 
+				for(int j = board[i].length-1; j > 0; j--) { 
+					if(board[i][j] ==0 && board[i][j-1] != 0) { 
+						board[i][j] = board[i][j-1]; 
+						board[i][j-1] = 0;
+					}
+				}
+			}
+		}
 		
 	}
 
@@ -167,7 +177,16 @@ public class Board {
 		// grabbing a row from a 2D array
 		// if it's called arr then arr[i] grabs ONE row!
 	
-		
+		for(int i =0; i < board.length; i++) { 
+			for(int k = 0; k < board[i].length; k++) { 
+				for(int j = board[i].length-1; j > 0; j--) { 
+					if(board[i][j] !=0 && board[i][j-1] == 0) { 
+						board[i][j-1] = board[i][j]; 
+						board[i][j] = 0;
+					}
+				}
+			}
+		}
 		
 		//visit every single row in the 2D array
 		//call the slideLeft method that takes in one argument
@@ -212,10 +231,18 @@ public class Board {
 		// copy over the 1D array representation of the column
 		// back to the 2D board array
 
+		for(int i =0; i < board[0].length; i++) { //length of column (does not matter since square) - check each column
+			for(int k = 0; k < board.length; k++) { 
+				for(int j = 0; j < board.length-1; j++) { //row
+						board[j][i] = board[j+1][i]; 
+						board[j+1][i] = 0;
+					}
+				}
+			}
+		}
 		
 		
-		
-	}
+	
 
 	public void slideDown(int[] arr) {
 
@@ -230,6 +257,17 @@ public class Board {
 
 	public void slideDown() {
 
+		for(int i =0; i < board[0].length; i++) { //length of column (does not matter since square) - check each column
+			for(int k = 0; k < board.length; k++) { 
+				for(int j = 0; j < board.length-1; j++) { //row
+					if(board[j][i] !=0 && board[j+1][i] == 0) { 
+						board[j+1][i] = board[j][i]; 
+						board[j][i] = 0;
+					}
+				}
+			}
+		}
+		
 	}
 
 	/*
@@ -246,6 +284,17 @@ public class Board {
 
 	public void combineRight() {
 
+		for(int i =0; i < board.length; i++) { 
+			for(int k = 0; k < board[i].length; k++) { 
+				for(int j = board[i].length-1; j > 0; j--) {
+					if(board[i][j] == board[i][j-1]) { 
+						board[i][j] += board[i][j-1];
+						board[i][j-1] = 0; 
+					}
+				}
+			}
+		}
+		
 	}
 
 	/*

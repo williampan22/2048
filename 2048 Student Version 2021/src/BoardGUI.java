@@ -102,6 +102,7 @@ public class BoardGUI extends JPanel implements KeyListener, ActionListener{
 			//slide right
 			case 39:
 				data.slideRight();
+				data.combineRight();
 				break;
 				
 			case 37: //left
@@ -109,11 +110,11 @@ public class BoardGUI extends JPanel implements KeyListener, ActionListener{
 				break;
 			case 38: //up
 				//what to do if keyCode is 38?
-				
+				data.slideUp();
 				
 				break;
 			case 40: //down
-				
+				data.slideDown();
 				break;
 		}
 		
