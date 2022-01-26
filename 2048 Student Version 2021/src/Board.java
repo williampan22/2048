@@ -234,8 +234,10 @@ public class Board {
 		for(int i =0; i < board[0].length; i++) { //length of column (does not matter since square) - check each column
 			for(int k = 0; k < board.length; k++) { 
 				for(int j = 0; j < board.length-1; j++) { //row
+					if(board[j][i] == 0 && board[j+1][i] != 0) {
 						board[j][i] = board[j+1][i]; 
 						board[j+1][i] = 0;
+					}
 					}
 				}
 			}
@@ -285,16 +287,13 @@ public class Board {
 	public void combineRight() {
 
 		for(int i =0; i < board.length; i++) { 
-			for(int k = 0; k < board[i].length; k++) { 
 				for(int j = board[i].length-1; j > 0; j--) {
 					if(board[i][j] == board[i][j-1]) { 
-						board[i][j] += board[i][j-1];
+						board[i][j] *= 2;
 						board[i][j-1] = 0; 
 					}
-				}
 			}
 		}
-		
 	}
 
 	/*
@@ -303,6 +302,15 @@ public class Board {
 	 */
 
 	public void combineLeft() {
+		
+		for(int i =0; i < board.length; i++) { 
+			for(int j = 0; j < board.length-1; j++) {
+				if(board[i][j] == board[i][j+1]) { 
+					board[i][j] *= 2;
+					board[i][j+1] = 0; 
+				}
+		}
+	}
 		
 	}
 	
@@ -313,6 +321,16 @@ public class Board {
 
 	public void combineUp() {
 
+		for(int i =0; i < board.length-1; i++) { 
+			for(int j = 0; j < board.length; j++) {
+				if(board[i][j] == board[i+1][j]) { 
+					board[i][j] *= 2;
+					board[i+1][j] = 0; 
+				}
+		}
+	}
+		
+		
 	}
 
 	/*
@@ -322,6 +340,15 @@ public class Board {
 
 	public void combineDown() {
 
+		for(int i =board.length-1; i > 0; i--) { 
+			for(int j = 0; j < board.length; j++) {
+				if(board[i][j] == board[i-1][j]) { 
+					board[i][j] *= 2;
+					board[i-1][j] = 0; 
+				}
+		}
+	}
+		
 	}
 
 	
@@ -335,18 +362,23 @@ public class Board {
 		//1) numbers slide to the left
 		//2) combine
 		//3) slide
+		slideLeft(); 
+		combineLeft();
 	}
 
 	public void right() {
-
+		slideRight(); 
+		combineRight();
 	}
 
 	public void up() {
-
+		slideUp();
+		combineUp();
 	}
 
 	public void down() {
-
+		slideDown();
+		combineDown();
 	}
 	
 	
