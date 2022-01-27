@@ -119,8 +119,15 @@ public class Board {
 
 	public void slideRight(int[] row) {
 		
-		
+		for(int k =0; k < row.length; k++) {
+			for(int i = row.length-1; i > 0; i--) { 
+				if(row[i] == 0 && row[i-1] != 0) { 
+					row[i] = row[i-1]; 
+					row[i-1] = 0; 
+				}
+		}
 	}
+	} 
 
 	/*
 	 * 
@@ -162,7 +169,14 @@ public class Board {
 
 	public void slideLeft(int[] arr) {
 		
-		
+		for(int k =0; k < arr.length; k++) { 
+			for(int i = 0; i < arr.length-1; i++) { 
+				if(arr[i] == 0 && arr[i+1] != 0) { 
+					arr[i] = arr[i+1]; 
+					arr[i+1] = 0; 
+				}
+			}
+		}
 		
 	}
 
@@ -362,21 +376,28 @@ public class Board {
 		//1) numbers slide to the left
 		//2) combine
 		//3) slide
+		
 		slideLeft(); 
 		combineLeft();
+		
 	}
 
 	public void right() {
+		
 		slideRight(); 
 		combineRight();
+		
 	}
 
 	public void up() {
+		
 		slideUp();
 		combineUp();
+		
 	}
 
 	public void down() {
+		
 		slideDown();
 		combineDown();
 	}
