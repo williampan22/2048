@@ -376,30 +376,34 @@ public class Board {
 		//1) numbers slide to the left
 		//2) combine
 		//3) slide
-		
-		slideLeft(); 
+		slideLeft();
 		combineLeft();
+		slideLeft(); 
+		
 		
 	}
 
 	public void right() {
-		
-		slideRight(); 
+		slideRight();
 		combineRight();
+		slideRight(); 
+		
 		
 	}
 
 	public void up() {
-		
 		slideUp();
 		combineUp();
+		slideUp();
+		
 		
 	}
 
 	public void down() {
-		
 		slideDown();
 		combineDown();
+		slideDown();
+		
 	}
 	
 	
